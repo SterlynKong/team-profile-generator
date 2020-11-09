@@ -4,10 +4,10 @@ const renderTeam = team => {
     // create html for manager
     const generateManager = manager => {
         return `
-                <div class="card employee-card">
+                <div class="card employee-card col-lg-3 col-md-4 col-sm-12 ">
                     <div class="card-header">
                         <h2 class="card-title">${manager.getName()}</h2>
-                        <h3 class="card-title"></h3>
+                        <h3 class="card-title role">${manager.getRole()}</h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
@@ -23,10 +23,10 @@ const renderTeam = team => {
     // create html for engineer
     const generateEngineer = engineer => {
         return `
-                <div class="card employee-card">
+                <div class="card employee-card col-lg-3 col-md-4 col-sm-12">
                     <div class="card-header">
                         <h2 class="card-title">${engineer.getName()}</h2>
-                        <h3 class="card-title">${engineer.getRole()}</h3>
+                        <h3 class="card-title role">${engineer.getRole()}</h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
@@ -43,10 +43,10 @@ const renderTeam = team => {
     // create html for intern
     const generateIntern = intern => {
         return `
-                <div class="card employee-card">
+                <div class="card employee-card col-lg-3 col-md-4 col-sm-12">
                     <div class="card-header">
                         <h2 class="card-title">${intern.getName()}</h2>
-                        <h3 class="card-title">${intern.getRole()}</h3>
+                        <h3 class="card-title role">${intern.getRole()}</h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
@@ -88,8 +88,11 @@ module.exports = team => {
             <head>
                 <meta charset="utf-8">
                 <title>The Team</title>
-                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.min.js">
+                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css">
+                <link rel="stylesheet" href="style.css">
             </head>
             <body>
                 <div class="container-fluid">
@@ -101,7 +104,7 @@ module.exports = team => {
                 </div>
                 <div class="container">
                     <div class="row">
-                        <div class="team-area col-12 d-flex justify-content-center">
+                        <div class="team-area col-12 justify-content-center">
                         ${renderTeam(team)}
             </body>
         </html>

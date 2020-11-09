@@ -169,6 +169,14 @@ function buildTeam() {
         fs.mkdirSync(output_dir)
     }
     fs.writeFileSync(outputPath, render(teamMates), "utf-8");
+    fs.copyFile("./src/style.css", "./dist/style.css", (err) => {
+        if (err) { 
+            console.log("Error Found:", err); 
+        }
+        else {
+            console.log("Stylesheet copied to dist!")
+        };
+    });
 };
 
 createManager();

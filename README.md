@@ -52,7 +52,7 @@
   ![team-profile-generator](/demo/team-profile-generator-demo.gif "team-profile-generator Screenshot")
 
   ## Video Demo:
-  [team-profile-generator-demo](/demo/team-profile-demo.mp4)
+  [team-profile-generator-demo](demo/team-profile-generator-demo.mp4)
 
 
   ## Contributing:

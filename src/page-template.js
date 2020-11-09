@@ -7,7 +7,7 @@ const renderTeam = team => {
                 <div class="card employee-card col-lg-3 col-md-4 col-sm-12 ">
                     <div class="card-header">
                         <h2 class="card-title">${manager.getName()}</h2>
-                        <h3 class="card-title role">${manager.getRole()}</h3>
+                        <h3 class="card-title role"><i class="fas fa-user-tie"></i>${manager.getRole()}</h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
@@ -26,13 +26,13 @@ const renderTeam = team => {
                 <div class="card employee-card col-lg-3 col-md-4 col-sm-12">
                     <div class="card-header">
                         <h2 class="card-title">${engineer.getName()}</h2>
-                        <h3 class="card-title role">${engineer.getRole()}</h3>
+                        <h3 class="card-title role"><i class="fas fa-drafting-compass"></i>${engineer.getRole()}</h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">
                             <li class="list-group-item">ID: ${engineer.getId()}</li>
                             <li class="list-group-item">Email: <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></li>
-                            <li class="list-group-item">Github: <a href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></li>
+                            <li class="list-group-item">Github: <a href="https://github.com/${engineer.getGithub()}" target="_blank">${engineer.getGithub()}</a></li>
                         <ul>
                     </div>
                 </div>
@@ -46,7 +46,7 @@ const renderTeam = team => {
                 <div class="card employee-card col-lg-3 col-md-4 col-sm-12">
                     <div class="card-header">
                         <h2 class="card-title">${intern.getName()}</h2>
-                        <h3 class="card-title role">${intern.getRole()}</h3>
+                        <h3 class="card-title role"><i class="fas fa-user-graduate"></i>${intern.getRole()}</h3>
                     </div>
                     <div class="card-body">
                         <ul class="list-group">

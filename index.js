@@ -1,25 +1,30 @@
-// Set required classes
+// Set requirements
 const Manager = require('./lib/Manager.js');
 const Engineer = require('./lib/Engineer.js');
 const Intern = require('./lib/Intern.js');
 
-// Set required npm modules
-const inquirer = require('inquirer.js');
+const inquirer = require("inquirer");
 const path = require('path');
 const fs = require('fs');
+
+// set output directory
+const output_dir = path.resolve(__dirname, "dist")
+
+// set output path
+const outputPath = path.join(output_dir, "team.html")
 
 
 // render team.html using template
 const render = require('./src/page-template.js');
 
 // container for employees
-const team = [];
+const teamMates = [];
 
 // container for employee ids
 const ids = [];
 
 // ask user to questions required for creation of team
-function createManager () {
+function createManager() {
     // Display start message to user
     console.log("Let's build your team!");
 
@@ -37,7 +42,7 @@ function createManager () {
         },
         {
             type: "input",
-            name: "email",
+            name: "managerEmail",
             message: "Please enter the manager's email:"
         },
         {
@@ -46,15 +51,20 @@ function createManager () {
             message: "What is the manager's office number?"
         }
     ]).then(answers => {
-        const manager = new Manager (answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
-        team.push(manager);
+        // create new Manager instance using user answers
+        const manager = new Manager(answers.managerName, answers.managerId, answers.managerEmail, answers.managerOfficeNumber);
+        // add manager to teamMates array
+        teamMates.push(manager);
+        // add manager id to ids array
         ids.push(answers.managerId);
+        // call function to prompt user whether they want to add team member
         createTeam();
     });
 };
 
 
-function createTeam () {
+function createTeam() {
+    // prompt user with choice to add team member
     inquirer.prompt([
         {
             type: "list",
@@ -62,7 +72,7 @@ function createTeam () {
             choices: ["Engineer", "Intern", "I do not want to add any more team members"]
         },
     ]).then(choice => {
-        switch(choice.addmemberChoice) {
+        switch (choice.addMemberChoice) {
             case "Engineer":
                 addEnginner();
                 break;
@@ -72,11 +82,11 @@ function createTeam () {
             default:
                 buildTeam();
         }
-    }); 
+    });
 };
 
 
-function addEnginner () {
+function addEnginner() {
     // display message to user
     console.log("Some information about this engineer is required!")
 
@@ -99,19 +109,23 @@ function addEnginner () {
         },
         {
             type: "input",
-            name: "engineerGitHub",
+            name: "engineerGithub",
             message: "What is the engineer's GitHub UserName?"
         }
     ]).then(answers => {
-        const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
-        team.push(engineer);
+        // create new Engineer instance using user answers
+        const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGithub);
+        // add Engineer to teamMates array
+        teamMates.push(engineer);
+        // add engineerId to ids array
         ids.push(answers.engineerId);
+        // call function to prompt user whether they want to add team member
         createTeam();
     });
 };
 
 
-function addIntern () {
+function addIntern() {
     // display message to user
     console.log("Some information about this intern is required!")
 
@@ -138,11 +152,23 @@ function addIntern () {
             message: "What is the name of the intern's school?"
         }
     ]).then(answers => {
+        // create new Intern using user's answers
         const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
-        team.push(intern);
+        // add intern to teamMates array
+        teamMates.push(intern);
+        // add intern id to ids array
         ids.push(answers.internId);
+        // call function to prompt user whether they want to add team member
         createTeam();
     });
+};
+
+
+function buildTeam() {
+    if (!fs.existsSync(output_dir)) {
+        fs.mkdirSync(output_dir)
+    }
+    fs.writeFileSync(outputPath, render(teamMates), "utf-8");
 };
 
 createManager();

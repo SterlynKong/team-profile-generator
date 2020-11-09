@@ -27,8 +27,8 @@
 
 
   ## Usage:
-  
-* [License](#license)
+  To being generating team-profile page, please run node index.js
+
 
 
 

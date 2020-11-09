@@ -49,7 +49,7 @@
 
 
   ## Image:
-  ![team-profile-generator](/demo/team-profile-generator-demo.mp4 "team-profile-generator Screenshot")
+  ![team-profile-generator](/<iframe src="https://drive.google.com/file/d/12barqHyaCXw2oS5pVt5gyOcSzMJ69SNy/preview" width="640" height="480"></iframe> "team-profile-generator Screenshot")
 
 
   ## Contributing:

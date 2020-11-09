@@ -1,5 +1,5 @@
 # team-profile-generator
-  ![GitHub license](https://img.shields.io/badge/license-GPL 3.0-blue.svg)
+  ![GitHub license](https://img.shields.io/badge/license-GPL_3.0-blue.svg)
 
   ## Description:
   NODE code to generate an html file with team member details based on answers provided by the user to prompts at the command line
